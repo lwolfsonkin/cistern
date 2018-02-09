@@ -53,6 +53,9 @@ public class SentenceReader implements Iterable<Sequence> {
 					if (row.isEmpty()) {
 						break;
 					}
+					else if (row.get(0).startsWith("#")) {
+						continue;
+					}
 
 					String word = check_index(form_index, "form_index", row, true);
 					String lemma = check_index(lemma_index, "lemma_index", row, false);
