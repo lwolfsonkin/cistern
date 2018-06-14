@@ -54,6 +54,15 @@ public class SentenceReader implements Iterable<Sequence> {
 						break;
 					}
 					else if (row.get(0).startsWith("#")) {
+						// Ignore comment lines
+						continue;
+					}
+					else if (row.get(0).indexOf("-") >= 0) {
+						// this means that the token index contains a range
+						// (denoted as e.g. `2-5`)
+						// which means that we're looking at a multi-word token
+						// which will get broken down individually in later lines
+						// NOTE: these lines can be safely ignored
 						continue;
 					}
 
