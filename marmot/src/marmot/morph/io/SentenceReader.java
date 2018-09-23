@@ -32,7 +32,10 @@ public class SentenceReader implements Iterable<Sequence> {
 
 			int number_ = 0;
 			LineIterator line_iterator_ = new LineIterator(
-					options_.getInputStream());
+					options_.getInputStream(),
+					// reading conllu, so the separator is a single tab, not just any whitespace
+					"\t"
+			);
 
 			@Override
 			public Sequence next() {
